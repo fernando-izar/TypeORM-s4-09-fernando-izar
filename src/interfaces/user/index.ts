@@ -10,6 +10,6 @@ export interface IUserLogin {
   password: string;
 }
 
-export interface IUserListOne {
-  authorization?: string;
-}
+// export interface IUserListOne {
+//   authorization?: string;
+// }
