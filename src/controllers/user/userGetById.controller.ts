@@ -4,9 +4,17 @@ import userGetByIdService from "../../services/user/userGetById.service";
 const userGetByIdController = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const user = await userGetByIdService({ id });
-
-  return res.status(201).json(user);
+  try {
+    const user = await userGetByIdService({ id });
+    return res.status(201).json(user);
+  } catch (err) {
+    if (err instanceof Error) {
+      return res.status(401).send({
+        error: err.name,
+        message: err.message,
+      });
+    }
+  }
 };
 
 export default userGetByIdController;
